@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" type="text/css" rel="stylesheet"></link>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/store.js"></script>
+</head>
+
+<body ng-app="store" ng-controller="shopper">
+  <h1>Shopping Interface</h1>
+  <h1>Current Products</h1>
+  <ul>
+    <li ng-repeat="product in products | orderBy:'name'">
+      <input type="checkbox" ng-click="toggleCart(product)"></input>
+      {{product.name}} - price {{product.price}}
+      <img src="{{product.imageUrl}}" alt="No Image Available"></img>
+    </li>
+  </ul>
+  <button type="submit" ng-click="order()">Submit Purchase</button>
+  <h1>Shopping Cart</h1>
+  <ul>
+    <li ng-repeat="product in purchased">
+      {{product.name}} - price {{product.price}}
+      <img src="{{product.imageUrl}}" alt="No Image Available"></img>
+    </li>
+  </ul>
+</body>
+
+</html>

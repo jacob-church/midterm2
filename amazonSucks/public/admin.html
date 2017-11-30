@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" type="text/css" rel="stylesheet"></link>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/store.js"></script>
+</head>
+
+<body ng-app="store" ng-controller="admin">
+  <div stle="margin-left: 5em;">
+    <h1>Store Management Interface</h1>
+    <form ng-submit="addProduct()">
+      Product Name <input type="text" ng-model="name"></input><br>
+      Price <input type="text" ng-model="price"></input><br>
+      Picture URL <input type="text" ng-model="imageUrl"></input>
+      <button type="submit">Add Product</button>
+    </form>
+    <h1>Current Products</h1>
+    <ul>
+      <li ng-repeat="product in products | orderBy:['name']">
+        <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
+        {{product.name}} - price {{product.price}} - ordered {{product.orders}}
+        <img src="{{product.imageUrl}}" alt="No Image Available"></img>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
