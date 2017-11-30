@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/election.js"></script>
+</head>
+
+<body ng-app="election" ng-controller="voter">
+  <h1>Voter Interface</h1>
+  <h1>Current Candidates</h1>
+  <ul>
+    <li ng-repeat="candidate in candidates | orderBy:'name'">
+      <input type="checkbox" ng-click="toggleBallot(candidate)"></input>{{candidate.name}}
+    </li>
+  </ul>
+  <button type="submit" ng-click="vote()">Submit Votes</button>
+  <h1>Submitted Ballot</h1>
+  <ul>
+    <li ng-repeat="candidate in ballot">
+      {{candidate.name}}
+    </li>
+  </ul>
+</body>
+
+</html>

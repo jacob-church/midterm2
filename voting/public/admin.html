@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/election.js"></script>
+</head>
+
+<body ng-app="election" ng-controller="admin">
+  <div stle="margin-left: 5em;">
+    <h1>Administrative Interface</h1>
+    <form ng-submit="addCandidate()">
+      <input type="text" ng-model="name"></input>
+      <button type="submit">Add Candidate</button>
+    </form>
+    <h1>Current Candidates</h1>
+    <ul>
+      <li ng-repeat="candidate in candidates | orderBy:['-votes','name']">
+        <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+        {{candidate.name}} - votes {{candidate.votes}}
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
